@@ -4,15 +4,24 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>GremlinParallelization | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Gremlin 算子并行化实现论文Gremlin-Parallelization-Paper   0 论文的结构：「是什么，为什么，怎么做」目标：高性能，易用的分布式OLAP图分析系统 0 摘要 这篇论文讲述的系统主要是一个支持 Gremlin 查询的分布式 OLAP 图分析系统，此系统已经在Ali 生产环境中应用 1. 介绍   主要讲解了解决大图交互式查询的性能问题，提出了核心技术：    1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GremlinParallelization">
+<meta property="og:url" content="http://example.com/2023/11/03/GremlinParallelization/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Gremlin 算子并行化实现论文Gremlin-Parallelization-Paper   0 论文的结构：「是什么，为什么，怎么做」目标：高性能，易用的分布式OLAP图分析系统 0 摘要 这篇论文讲述的系统主要是一个支持 Gremlin 查询的分布式 OLAP 图分析系统，此系统已经在Ali 生产环境中应用 1. 介绍   主要讲解了解决大图交互式查询的性能问题，提出了核心技术：    1">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/DataSet-6.png">
+<meta property="og:image" content="http://example.com/Scale-6.png">
+<meta property="og:image" content="http://example.com/KeyDesign-6.png">
+<meta property="og:image" content="http://example.com/CompareDB.png">
+<meta property="article:published_time" content="2023-11-03T09:02:05.000Z">
+<meta property="article:modified_time" content="2023-11-03T09:17:18.416Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/DataSet-6.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -71,9 +80,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-GremlinParallelization" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-GremlinParallelization" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/11/03/GremlinParallelization/" class="article-date">
   <time class="dt-published" datetime="2023-11-03T09:02:05.000Z" itemprop="datePublished">2023-11-03</time>
@@ -86,8 +93,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/11/03/GremlinParallelization/">GremlinParallelization</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      GremlinParallelization
     </h1>
   
 
@@ -137,107 +144,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-ForDataInfra" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/11/02/ForDataInfra/" class="article-date">
-  <time class="dt-published" datetime="2023-11-02T11:42:57.000Z" itemprop="datePublished">2023-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/11/02/ForDataInfra/">ForDataInfra</a>
-    </h1>
+    <a href="/2023/11/02/ForDataInfra/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ForDataInfra</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这个博客是17年11月30日第一次提交，到今天差不多已经6年过去了，这六年在博客中没有留下任何足迹，只是在对应的仓库中逐渐成长，<br>从今天起，用这个博客持续记录工作技术中的点点滴滴，争取在 Data&#x2F;Infra 方向持续创作输出。</p>
-<h1 id="涉及组件"><a href="#涉及组件" class="headerlink" title="涉及组件"></a>涉及组件</h1><ol>
-<li>HBase  </li>
-<li>Druid</li>
-<li>HugeGraph<br>核心技术：tinkerPop:GremlinServer,RestFulServer</li>
-<li>GraphScope<br> 语言栈：<br> Java<br> CPP<br> Rust<br> Python</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/11/02/ForDataInfra/" data-id="cloiek2ue00002n613ijcdn0z" data-title="ForDataInfra" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/11/02/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-11-02T11:33:14.578Z" itemprop="datePublished">2023-11-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/11/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/11/02/hello-world/" data-id="cloiek2ul00012n61haidgjzj" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
